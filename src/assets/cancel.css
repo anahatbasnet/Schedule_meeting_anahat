@@ -1,0 +1,38 @@
+.cancel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 50vh;
+    font-family: Arial, sans-serif;
+    background-color: #fffefe;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  
+  .cancel h2 {
+    font-size: 2rem;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+    color: red;
+  }
+  
+  .cancel p {
+    font-size: 1.2rem;
+    margin-top: 0.5rem;
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+  
+  .cancel a {
+    color: #0077cc;
+    font-weight: bold;
+    text-decoration: none;
+  }
+  
+  .cancel a:hover {
+    text-decoration: underline;
+  }
+  

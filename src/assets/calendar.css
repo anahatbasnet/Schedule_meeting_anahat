@@ -1,0 +1,85 @@
+.containers {
+  display: flex;
+  border: 2px solid black;
+width: 100%;
+  box-shadow: 10px 10px 0px 0px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 10px 10px 0px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 10px 10px 0px 0px rgba(0, 0, 0, 0.75);
+}
+.b_1 {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin: 3rem;
+}
+.b_1 img {
+  height: 70px;
+  width: 70px;
+  border-radius: 50%;
+}
+.b_2 {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: 0.5rem;
+  margin-right: 5rem;
+}
+
+.btn-time {
+  display: flex;
+  flex-direction: column;
+  width: 15rem;
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: white;
+  border: none;
+  border-radius: 4px;
+  gap: 1rem;
+  height: 20rem;
+  overflow: auto;
+  animation: slideIn 0.5s forwards;
+}
+.btn-type button {
+  width: 20rem;
+  cursor: pointer;
+  margin: 2px;
+}
+.action button {
+  background-color: grey;
+  margin: 10px;
+  height: 35px;
+  width: 75px;
+  color: white;
+  cursor: pointer;
+}
+.action button:hover {
+  background-color: rgba(0, 0, 0, 0.689);
+}
+
+.b_2 input {
+  height: 2rem;
+}
+.b_2 input ::placeholder {
+  margin-left: 15px;
+}
+
+.btn-hr {
+  display: flex;
+
+  justify-content: space-between;
+}
+.btn-hr button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  border: 1px solid black;
+}
+.btn-hr button:hover,
+.btn-hr button:active,
+.btn-hr button:focus {
+  background-color: rgb(0, 119, 247);
+  color: white;
+}
+.back{
+  margin-top: 1rem;
+}
