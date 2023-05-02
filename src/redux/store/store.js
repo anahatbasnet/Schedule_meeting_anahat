@@ -15,6 +15,7 @@ const store = configureStore({
     timehandler: timehandlerSliceReducer,
     userdata: dataSliceReducer,
     CalendarSlice: calSliceReducer,
+ 
    
   },
 });

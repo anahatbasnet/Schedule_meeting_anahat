@@ -72,9 +72,8 @@ const Info = () => {
         {detail === "30minutes" ? "30 Minutes Meeting" : "15 Minutes Meeting"}
         <BsFillCameraVideoFill /> Call Video
         <p>
-
-        <AiFillClockCircle />
-        {detail === "30minutes" ? "30 Minutes" : "15 Minutes"}
+          <AiFillClockCircle />
+          {detail === "30minutes" ? "30 Minutes" : "15 Minutes"}
         </p>
         <p>
           <AiOutlineCalendar />
@@ -98,14 +97,15 @@ const Info = () => {
             onChange={emailhandler}
             required
           />
-              Guest Email
           {toggler && (
             <div>
+              Guest Email
               <input
                 type="email"
                 placeholder="you@example.com"
                 onChange={guestemailhandler}
                 required
+                style={{ width: "100%" }}
               />
             </div>
           )}

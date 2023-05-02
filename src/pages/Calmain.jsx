@@ -6,7 +6,7 @@ import { BiWorld } from "react-icons/bi";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import Calendar from "react-calendar";
-import "flatpickr/dist/themes/material_blue.css";
+
 import "../assets/calendar.css";
 import profile from "../assets/images/profile.jpg";
 import "react-calendar/dist/Calendar.css";
@@ -40,7 +40,7 @@ const Calmain = () => {
   const calendardate = new Date(dates);
 
   //   const dateString = dates.toLocaleDateString();
-  const [newDimensionArray, setnewDimensionArray] = useState(null);
+  const [newTimeslotArray, setnewTimeslotArray] = useState(null);
   const currentDate = new Date();
   
   useEffect(() => {
@@ -55,15 +55,15 @@ const Calmain = () => {
       currentDate.getDay() === val &&
       currentDate.getMonth() === month
     ) {
-      const newDimensionArray = twentyFourHrFormat.thirty.filter((item) => {
+      const newTimeslotArray = twentyFourHrFormat.thirty.filter((item) => {
         console.log(countryhour);
         return parseInt(item) > countryhour + 1;
       });
-      setnewDimensionArray(newDimensionArray);
+      setnewTimeslotArray(newTimeslotArray);
     } else {
-      setnewDimensionArray(null);
+      setnewTimeslotArray(null);
     }
-    console.log(newDimensionArray);
+    console.log(newTimeslotArray);
   
     // eslint-disable-next-line
   }, [dates]);
@@ -195,7 +195,7 @@ const Calmain = () => {
                   </button>
                 </div>
               </div>
-              {newDimensionArray === null &&
+              {newTimeslotArray === null &&
                 (!timeToggle ? twelveHrFormat : twentyFourHrFormat).thirty.map(
                   (items) => (
                     <button
@@ -207,8 +207,8 @@ const Calmain = () => {
                     </button>
                   )
                 )}
-              {newDimensionArray !== null &&
-                newDimensionArray.map((items) => (
+              {newTimeslotArray !== null &&
+                newTimeslotArray.map((items) => (
                   <button
                     onClick={() => {
                       handleinfopage(items);
@@ -243,7 +243,7 @@ const Calmain = () => {
                   </button>
                 </div>
               </div>
-              {newDimensionArray === null &&
+              {newTimeslotArray === null &&
                 (!timeToggle ? twelveHrFormat : twentyFourHrFormat).fifteen.map(
                   (items) => (
                     <button
@@ -255,8 +255,8 @@ const Calmain = () => {
                     </button>
                   )
                 )}
-              {newDimensionArray !== null &&
-                newDimensionArray.map((items) => (
+              {newTimeslotArray !== null &&
+                newTimeslotArray.map((items) => (
                   <button
                     onClick={() => {
                       handleinfopage(items);
