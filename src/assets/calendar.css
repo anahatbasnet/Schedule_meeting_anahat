@@ -12,6 +12,9 @@ width: 100%;
   flex-direction: column;
   margin: 3rem;
 }
+.b_1 p{
+  margin-top: 8px;
+}
 .b_1 img {
   height: 70px;
   width: 70px;
@@ -35,7 +38,7 @@ width: 100%;
   border: none;
   border-radius: 4px;
   gap: 1rem;
-  height: 20rem;
+  height: 25rem;
   overflow: auto;
   animation: slideIn 0.5s forwards;
 }
@@ -58,6 +61,7 @@ width: 100%;
 
 .b_2 input {
   height: 2rem;
+
 }
 .b_2 input ::placeholder {
   margin-left: 15px;
@@ -67,6 +71,12 @@ width: 100%;
   display: flex;
 
   justify-content: space-between;
+}
+.toggle{
+  display: flex;
+  justify-content: center;
+  border: 2px solid blue;
+  padding: 5px;
 }
 .btn-hr button {
   background-color: transparent;

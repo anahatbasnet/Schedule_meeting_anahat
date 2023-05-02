@@ -71,8 +71,11 @@ const Info = () => {
         <h2>Anahat Basnet</h2>
         {detail === "30minutes" ? "30 Minutes Meeting" : "15 Minutes Meeting"}
         <BsFillCameraVideoFill /> Call Video
+        <p>
+
         <AiFillClockCircle />
         {detail === "30minutes" ? "30 Minutes" : "15 Minutes"}
+        </p>
         <p>
           <AiOutlineCalendar />
           {timebtn}-{day}-{month}-2023

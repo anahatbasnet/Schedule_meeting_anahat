@@ -42,50 +42,32 @@ const Calmain = () => {
   //   const dateString = dates.toLocaleDateString();
   const [newDimensionArray, setnewDimensionArray] = useState(null);
   const currentDate = new Date();
+  
   useEffect(() => {
     const calendardate = new Date(dates);
     const val = calendardate.getDay();
     const month = calendardate.getMonth();
     console.log(val, month);
     console.log(currentDate.getDate(), currentDate.getMonth());
-    // function convertTo12HrFormat(times) {
-    //   const result = [];
-    //   for (let i = 0; i < times.length; i++) {
-    //     const time = times[i];
-    //     const [hour, minute] = time.split(":");
-    //     let formattedHour = hour % 12 || 12;
-    //     const formattedTime = `${formattedHour}:${minute} ${
-    //       hour >= 12 ? "PM" : "AM"
-    //     }`;
-    //     result.push(formattedTime);
-    //   }
-    //   return result;
-    // }
+  
     if (
       dates !== "" &&
       currentDate.getDay() === val &&
       currentDate.getMonth() === month
     ) {
-      setnewDimensionArray(
-        twentyFourHrFormat.thirty.filter((item) => {
-          console.log(countryhour);
-          return parseInt(item) > countryhour + 1;
-        })
-      );
-      // path=== "15minutes"&&setnewDimensionArray(
-      //   twentyFourHrFormat.fifteen.filter((item) => {
-      //     console.log(countryhour);
-      //     return parseInt(item) > countryhour + 1;
-      //   })
-      // );
+      const newDimensionArray = twentyFourHrFormat.thirty.filter((item) => {
+        console.log(countryhour);
+        return parseInt(item) > countryhour + 1;
+      });
+      setnewDimensionArray(newDimensionArray);
     } else {
       setnewDimensionArray(null);
     }
     console.log(newDimensionArray);
-
+  
     // eslint-disable-next-line
   }, [dates]);
-  console.log(newDimensionArray);
+  
 
   const current = new Date();
   console.log(current.getHours());
@@ -116,30 +98,39 @@ const Calmain = () => {
 
   const [time, setTime] = useState([]);
   useEffect(() => {
-    axios
-      .get("http://worldtimeapi.org/api/timezone")
-
-      .then((res) => setTime(res.data));
+    const fetchData = async () => {
+      try {
+        const response = await axios.get("http://worldtimeapi.org/api/timezone");
+        setTime(response.data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    fetchData();
   }, []);
-  // dispatch(setday(day))
-  // dispatch(setmonth(month))
-  // dispatch(settime(time))
+  
+
   const month = calendardate.toLocaleDateString("en-US", { month: "long" });
   const day = calendardate.toLocaleDateString("en-US", { weekday: "long" });
 
   useEffect(() => {
-    axios.get(`http://worldtimeapi.org/api/timezone/${timez}`).then((res) => {
-      console.log(res.data.datetime);
-      const isoString = res.data.datetime;
-      const hours = parseInt(isoString.substring(11, 13), 10);
-      console.log(hours);
-      dispatch(setday(day));
-      dispatch(setmonth(month));
-      dispatch(setcountryhour(hours));
-      console.log(day, month);
-    });
-    // eslint-disable-next-line
-  }, [timez]);
+    async function getTimeData() {
+      try {
+        const response = await axios.get(`http://worldtimeapi.org/api/timezone/${timez}`);
+        const { datetime } = response.data;
+        const hours = parseInt(datetime.substring(11, 13), 10);
+        console.log(hours);
+        dispatch(setday(day));
+        dispatch(setmonth(month));
+        dispatch(setcountryhour(hours));
+        console.log(day, month);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+    getTimeData();
+  }, [timez, day, month, dispatch]);
+  
   return (
     <div className="containers">
       <div className="b_1">
@@ -147,19 +138,22 @@ const Calmain = () => {
         <h2>Anahat Basnet</h2>
         {path === "30minutes" ? "30 Minutes Meeting" : "15 Minutes Meeting"}
         <p>
-          {" "}
+          
           <BsFillCameraVideoFill /> Call Video
         </p>
         <p>
           <AiFillClockCircle />
           {path === "30minutes" ? "30 Minutes" : "15 Minutes"}
         </p>
+        <p>
+
         <BiWorld />
         <select name="TimeZone" onChange={timezonehandler}>
           {time.map((item) => (
             <option value={item}>{item}</option>
-          ))}
+            ))}
         </select>
+            </p>
         <div className="back">
           <Link to="/">
             <BsArrowLeftCircleFill />
@@ -249,8 +243,20 @@ const Calmain = () => {
                   </button>
                 </div>
               </div>
-              {(!timeToggle ? twelveHrFormat : twentyFourHrFormat).fifteen.map(
-                (items) => (
+              {newDimensionArray === null &&
+                (!timeToggle ? twelveHrFormat : twentyFourHrFormat).fifteen.map(
+                  (items) => (
+                    <button
+                      onClick={() => {
+                        handleinfopage(items);
+                      }}
+                    >
+                      {items}
+                    </button>
+                  )
+                )}
+              {newDimensionArray !== null &&
+                newDimensionArray.map((items) => (
                   <button
                     onClick={() => {
                       handleinfopage(items);
@@ -258,8 +264,8 @@ const Calmain = () => {
                   >
                     {items}
                   </button>
-                )
-              )}
+                ))}
+            
             </div>
           ))}
       </div>
