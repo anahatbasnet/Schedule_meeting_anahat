@@ -19,6 +19,7 @@ const Info = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { timebtn } = useSelector((state) => state.timehandler);
+  
   const handleSubmit = (event) => {
     event.preventDefault();
     navigate(`/Complete/${detail}`);
@@ -59,10 +60,12 @@ const Info = () => {
     });
   };
   const { detail } = useParams();
-  console.log(detail);
+ 
 
   const day = useSelector((state) => state.CalendarSlice.day);
   const month = useSelector((state) => state.CalendarSlice.month);
+  const daymonth = useSelector((state) => state.CalendarSlice.daymonth);
+  const year = useSelector((state) => state.CalendarSlice.year);
 
   return (
     <div className="containers">
@@ -70,14 +73,17 @@ const Info = () => {
         <img src={profile} alt="profile" />
         <h2>Anahat Basnet</h2>
         {detail === "30minutes" ? "30 Minutes Meeting" : "15 Minutes Meeting"}
-        <BsFillCameraVideoFill /> Call Video
+        <p>
+          <BsFillCameraVideoFill /> Video Call
+        </p>
         <p>
           <AiFillClockCircle />
           {detail === "30minutes" ? "30 Minutes" : "15 Minutes"}
         </p>
         <p>
           <AiOutlineCalendar />
-          {timebtn}-{day}-{month}-2023
+          {timebtn}-{daymonth},
+          {month},{day},{year}
         </p>
       </div>
 

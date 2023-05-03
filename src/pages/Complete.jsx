@@ -9,6 +9,7 @@ const Complete = () => {
     const day = useSelector((state) => state.CalendarSlice.day);
     const month = useSelector((state) => state.CalendarSlice.month);
     const { timebtn } = useSelector((state) => state.timehandler);
+    const daymonth = useSelector((state) => state.CalendarSlice.daymonth);
     const timename = useSelector ((state)=>state.CalendarSlice.timezone)
   
     const{duration} =useParams();
@@ -28,7 +29,7 @@ const Complete = () => {
         <h2>What</h2>
        {duration==="15minutes"?"15 Minute Meeting":"30 Minute Meeting"}
         <h2>When</h2>
-        <p>11,{day},{month},2023|{timebtn}|{timename}</p>
+        <p>{daymonth},{month},{day},2023|{timebtn}|{timename}</p>
         <h2>Who</h2>
         <p>Anahat Basnet -Organizer anaha@gmailcom</p>
         Attendies:<p>{username} - {email}</p>

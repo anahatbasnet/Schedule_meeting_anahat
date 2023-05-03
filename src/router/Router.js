@@ -26,13 +26,12 @@ const Router = createBrowserRouter([
     element: <Info />,
   },
   {
-    path:"Complete/:duration",
-    element:<Complete/>
+    path: "Complete/:duration",
+    element: <Complete />,
   },
   {
-    path:"Cancel",
-    element:<Cancel/>
+    path: "Cancel",
+    element: <Cancel />,
   },
-  
 ]);
 export default Router;

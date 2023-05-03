@@ -8,10 +8,18 @@ const calSlice = createSlice({
     month: "",
     timezone: "",
     countryhour: "",
+    daymonth:"",
+    year:"",
   },
   reducers: {
     setdate: (state, action) => {
       state.date = action.payload;
+    },
+    setyear: (state, action) => {
+      state.year = action.payload;
+    },
+    setdaymonth: (state, action) => {
+      state.daymonth = action.payload;
     },
     setcountryhour: (state, action) => {
       state.countryhour = action.payload;
@@ -42,5 +50,7 @@ export const {
   setmonth,
   settimezone,
   setcountryhour,
+  setdaymonth,
+  setyear
 } = calSlice.actions;
 export default calSlice.reducer;
